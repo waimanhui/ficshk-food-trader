@@ -1,0 +1,25 @@
+name: Download Trader PDF
+on: 
+  schedule:
+  - cron: '* * 1 * *'  # first day of each month
+  workflow_dispatch:
+  
+permissions:
+  contents: write
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download file
+        run: |
+          curl -o registerTrader.pdf https://www.fics.gov.hk/ie/tr/traderrecord/report/download_register.htm
+          mkdir -p data
+          mv -f registerTrader.pdf data/registerTrader.pdf
+      - name: Commit latest PDF
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git add -A
+          git commit -am "Update latest registered trader PDF $(date +'%Y-%m-%dT%H:%M:%S') UTC"
+          git push -f origin main
