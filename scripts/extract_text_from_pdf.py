@@ -224,7 +224,7 @@ for page_layout in extract_pages(PDFfilename):
         foodCategory = foodCategory_next
 
     if not (n % 1000):
-        print ("Processing page {n}")
+        print (f"Processing page {n}")
 
 # create CSV file
 print("Exporting...")

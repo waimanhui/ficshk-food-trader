@@ -27,7 +27,7 @@ Download the lastest PDF and update the fole location in `scripts/.env` then run
 python3 -m venv venv
 .\venv\scripts\activate
 pip install -r requirements.txt
-python extract_text.py
+python extract_text_from_pdf.py
 ```
 
 > **Note**: The code are for running on Windows, it may require some adjustments for running on Mac or Linux
