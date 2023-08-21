@@ -228,7 +228,7 @@ for page_layout in extract_pages(PDFfilename):
 
 # create CSV file
 print("Exporting...")
-with open(CSVfilename, 'w', encoding="utf-8", newline='') as f:
+with open(CSVfilename, 'w', encoding="utf-8-sig", newline='') as f:
     writer = csv.writer(f)
     
     writer.writerow(header)
